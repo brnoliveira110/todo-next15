@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15 # Você pode escolher a versão do Postgres que quiser
+    container_name: prisma-postgres-db
+    restart: always
+    ports:
+      - "5432:5432" # Mapeia a porta do seu PC para a porta do contêiner
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: randompassword # Use a MESMA senha do seu .env
+      POSTGRES_DB: mydb # Use o MESMO nome de banco do seu .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
